@@ -12,7 +12,8 @@
 // constructor with default name
 // Class::Constructor
 Library::Library(const string &Name) {
-  RubysLibrary = Name;
+  // Was Libs in main.cpp the library name
+  Libs = Name;
 }
 
 // LEAVE AS IS  
@@ -24,15 +25,37 @@ Library::~Library() {
 
 // true if book found in library
 bool Library::isInLibrary(const string &BookName) const {
-  return true;
+  // Where is BookName found?
+  for (int i = 0; i < MAX; i++) {
+    if (listOfBooks[i] == BookName) {
+      return true;
+    }
+  }
+}
+
+// return the valid index if book is in library or -1 if book is not in library
+// using numberOfBooks because array may be partially filled
+int findBook(const string& BookName) const { 
+  // if there are no books in library, then return -1
+  if (numberOfBooks == 0) {
+    return -1;
+  } else {
+    // perform iterations until element is found in array
+    // return index
+    for (int i = 0; i < numberOfBooks; i++) {
+      if (listOfBooks[i] == BookName; i++) {
+        return i; 
+      }
+    }
+    return -1; // why would i still need to return -1 though?
+  }
 }
 
 // add a new book
 // return true if successful, false if
 // book already in library
-// incredment the loop up???
 bool Library::addBook(const string &BookName) {
-  return false;
+
 }
 
 // remove a book
