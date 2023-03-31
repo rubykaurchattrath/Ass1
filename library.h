@@ -19,7 +19,7 @@ public:
   // constructor with default name
   explicit Library(const string &Name);
 
-  string RubysLibrary; 
+  string Libs; 
 
   // destructor
   virtual ~Library();
@@ -41,10 +41,13 @@ public:
   bool isInLibrary(const string &BookName) const;
 
 private:
-  static const int MAX = 100; //max num of books
-  string listOfBooks[MAX]; //partially filled book array
+  static const int MAX = 100; //max number of books
   int numberOfBooks;
-  int findBook(const string& name) const; // return the valid index if book is in library or -1 if book is not in library
+  string listOfBooks[MAX]; //partially filled book array
+  
+  // return the valid index if book is in library or -1 if book is not in library 
+  int findBook(const string& name) const; 
+
 };
 
 #endif  // ASS1_LIBRARY_H
