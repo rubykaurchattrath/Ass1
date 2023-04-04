@@ -33,22 +33,24 @@ bool Library::isInLibrary(const string &BookName) const {
   }
 }
 
+
 // return the valid index if book is in library or -1 if book is not in library
 // using numberOfBooks because array may be partially filled
-int findBook(const string& BookName) const { 
-  // if there are no books in library, then return -1
-  if (numberOfBooks == 0) {
-    return -1;
-  } else {
-    // perform iterations until element is found in array
-    // return index
-    for (int i = 0; i < numberOfBooks; i++) {
-      if (listOfBooks[i] == BookName; i++) {
-        return i; 
-      }
+int findBook(const string& name) const { 
+  bool isFound = false; 
+  int result = -1;
+  int searchIndex = 0;
+
+  // If bag is empty, numberOfBooks is zero, so loop is skipped
+  while (!isFound && (searchIndex < numberOfBooks)) {
+    isFound = (items[searchIndex] == target); 
+    if (isFound) {
+      result = searchIndex;
+    } else {
+      searchIndex++;
     }
-    return -1; // why would i still need to return -1 though?
   }
+  return result;
 }
 
 // add a new book
@@ -67,6 +69,9 @@ bool Library::removeBook(const string &BookName) {
 
 // list all books
 void Library::listAllBooks() const {
+  for (int i = numberOfBooks - 1; i >= 0; i--) {
+    cout << listOfBooks[i];
+  }
 }
 
 ostream &operator<<(ostream &Out, const Library &Lib) {
