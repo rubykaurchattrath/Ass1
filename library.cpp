@@ -11,12 +11,10 @@
 
 // constructor with default name
 // Class::Constructor
-Library::Library(const string &Name) {
-  // Was Libs in main.cpp the library name?????
-  Libs = Name;
+Library::Library(const string &name) {
+  Libs = name;
 }
 
-// LEAVE AS IS  
 // destructor
 // nothing on heap
 Library::~Library() {
@@ -24,9 +22,9 @@ Library::~Library() {
 }
 
 // true if book found in library
-bool Library::isInLibrary(const string &BookName) const {
+bool Library::isInLibrary(const string &bookName) const {
   for (int i = 0; i < MAX; i++) {
-    if (listOfBooks[i] == BookName) {
+    if (listOfBooks[i] == bookName) {
       return true;
     }
   }
@@ -34,7 +32,7 @@ bool Library::isInLibrary(const string &BookName) const {
 
 // return the valid index if book is in library or -1 if book is not in library
 // using numberOfBooks because array may be partially filled
-int findBook(const string& name) const { 
+int Library::findBook(const string& name) const { 
   bool isFound = false; 
   int result = -1;
   int searchIndex = 0;
@@ -55,9 +53,9 @@ int findBook(const string& name) const {
 // add a new book
 // return true if successful, false if
 // book already in library and/or if library is full
-bool Library::addBook(const string &BookName) {
-  if (!Libs::isInLibrary(BookName) && (numberOfBooks < MAX-1)) {
-    listOfBooks[numberOfBooks + 1] = BookName;
+bool Library::addBook(const string &bookName) {
+  if (!Library::isInLibrary(bookName) && (numberOfBooks < MAX-1)) {
+    listOfBooks[numberOfBooks + 1] = bookName;
     return true;
   } else {
     return false;
@@ -67,8 +65,8 @@ bool Library::addBook(const string &BookName) {
 // remove a book
 // return true if successfully removed
 // false if book not in library
-bool Library::removeBook(const string &BookName) {
-  int locatedBook = findBook(BookName);
+bool Library::removeBook(const string &bookName) {
+  int locatedBook = findBook(bookName);
   // can I even use isEmpty??
   bool canRemoveBook = !isEmpty() && (locatedBook > -1);
   if (canRemoveBook) {
@@ -80,8 +78,13 @@ bool Library::removeBook(const string &BookName) {
 
 // list all books
 void Library::listAllBooks() const {
-  for (int i = numberOfBooks - 1; i > -1; i--) {
-    cout << listOfBooks[i];
+  if (numberOfBooks == 0) {
+    cout << "No books" << endl;
+  } else {
+    // edit i>=0
+    for (int i = numberOfBooks - 1; i >= 0; i--) {
+    cout << listOfBooks[i] << endl;
+    } 
   }
 }
 
