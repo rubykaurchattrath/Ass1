@@ -8,6 +8,7 @@
 
 #include "library.h"
 #include <iostream>
+#include <string>
 
 // constructor with default name
 // Class::Constructor
@@ -67,7 +68,6 @@ bool Library::addBook(const string &bookName) {
 // false if book not in library
 bool Library::removeBook(const string &bookName) {
   int locatedBook = findBook(bookName);
-  // can I even use isEmpty??
   bool canRemoveBook = !isEmpty() && (locatedBook > -1);
   if (canRemoveBook) {
     numberOfBooks--;
