@@ -44,7 +44,7 @@ private:
   string listOfBooks[MAX]; //partially filled book array
   
   // return the valid index if book is in library or -1 if book is not in library 
-  int findBook(const string& name) const; 
+  int findBook(const string& bookName) const; 
 
 };
 
