@@ -16,8 +16,7 @@ class Library {
 
 public:
   // constructor with default name
-  explicit Library(const string &name);
-  string Libs; 
+  explicit Library(const string &defaultName);
 
   // destructor
   virtual ~Library();
@@ -42,6 +41,7 @@ private:
   static const int MAX = 100; //max number of books
   int numberOfBooks; 
   string listOfBooks[MAX]; //partially filled book array
+  string libraryName;
   
   // return the valid index if book is in library or -1 if book is not in library 
   int findBook(const string& bookName) const; 
