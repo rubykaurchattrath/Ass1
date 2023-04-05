@@ -1,6 +1,6 @@
 //
 // Created by Ruby Kaur on 03/30/2023.
-//
+
 // Library class demonstrating partially filled arrays
 // Can add/remove books from library
 // findbooks in library
@@ -23,25 +23,25 @@ Library::~Library() {
 }
 
 // true if book found in library
+// false if book is NOT found in library
 bool Library::isInLibrary(const string &bookName) const {
-  for (int i = 0; i < (numberOfBooks - 1); i++) {
-    if (listOfBooks[i] == bookName) {
-      return true;
-    }
+  if (findBook(bookName) == -1){
+    return false;
+  } else {
+    return true;
   }
 }
 
 // return the valid index if book is in library or -1 if book is not in library
 // using numberOfBooks because array may be partially filled
-int Library::findBook(const string& name) const { 
+int Library::findBook(const string& bookName) const { 
   bool isFound = false; 
   int result = -1;
   int searchIndex = 0;
 
   // If bag is empty, numberOfBooks is zero, so loop is skipped
   while (!isFound && (searchIndex < numberOfBooks)) {
-    // what is name though in this case?
-    isFound = (listOfBooks[searchIndex] == name); 
+    isFound = (listOfBooks[searchIndex] == bookName); 
     if (isFound) {
       result = searchIndex;
     } else {
@@ -69,9 +69,10 @@ bool Library::addBook(const string &bookName) {
 // false if book not in library
 bool Library::removeBook(const string &bookName) {
   int locatedBook = findBook(bookName);
-  if (locatedBook !== -1) {
+  if (locatedBook != -1) {
     numberOfBooks--;
     listOfBooks[locatedBook] = listOfBooks[numberOfBooks];
+    return true;
   } else {
     return false;
   }
@@ -82,12 +83,13 @@ void Library::listAllBooks() const {
   if (numberOfBooks == 0) {
     cout << "No books" << endl;
   } else {
-    for (int i = numberOfBooks - 1; i > 0; i--) {
+    for (int i = numberOfBooks - 1; i >= 0; i--) {
     cout << listOfBooks[i] << endl;
     } 
   }
 }
 
+// unused parameter??? Lib, return by reference from listAllBooks()
 ostream &operator<<(ostream &Out, const Library &Lib) {
-  return Out << listAllBooks();
+  return Out << Lib.listAllBooks();
 }
