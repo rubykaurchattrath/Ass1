@@ -24,7 +24,7 @@ public:
 
   // add a new book
   // return true if successful, false if
-  // book already in library
+  // book already in library and/or library is full
   bool addBook(const string &bookName);
 
   // remove a book

@@ -24,7 +24,7 @@ Library::~Library() {
 
 // true if book found in library
 bool Library::isInLibrary(const string &bookName) const {
-  for (int i = 0; i < MAX; i++) {
+  for (int i = 0; i < (numberOfBooks - 1); i++) {
     if (listOfBooks[i] == bookName) {
       return true;
     }
@@ -55,8 +55,9 @@ int Library::findBook(const string& name) const {
 // return true if successful, false if
 // book already in library and/or if library is full
 bool Library::addBook(const string &bookName) {
-  if (!Library::isInLibrary(bookName) && (numberOfBooks < MAX-1)) {
-    listOfBooks[numberOfBooks + 1] = bookName;
+  if (!Library::isInLibrary(bookName) && (numberOfBooks < MAX)) {
+    numberOfBooks++;
+    listOfBooks[numberOfBooks] = bookName;
     return true;
   } else {
     return false;
@@ -68,12 +69,12 @@ bool Library::addBook(const string &bookName) {
 // false if book not in library
 bool Library::removeBook(const string &bookName) {
   int locatedBook = findBook(bookName);
-  bool canRemoveBook = !isEmpty() && (locatedBook > -1);
-  if (canRemoveBook) {
+  if (locatedBook !== -1) {
     numberOfBooks--;
     listOfBooks[locatedBook] = listOfBooks[numberOfBooks];
+  } else {
+    return false;
   }
-  return canRemoveBook;;
 }
 
 // list all books
@@ -81,13 +82,12 @@ void Library::listAllBooks() const {
   if (numberOfBooks == 0) {
     cout << "No books" << endl;
   } else {
-    // edit i>=0
-    for (int i = numberOfBooks - 1; i >= 0; i--) {
+    for (int i = numberOfBooks - 1; i > 0; i--) {
     cout << listOfBooks[i] << endl;
     } 
   }
 }
 
 ostream &operator<<(ostream &Out, const Library &Lib) {
-  return Out;
+  return Out << listAllBooks();
 }
