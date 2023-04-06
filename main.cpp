@@ -33,9 +33,24 @@ void test1() {
   Result = Libs.removeBook("The Odyssey");
   assert(!Result);
 }
+/*
+void test2() {
 
+}
+
+void test3() {
+
+}
+
+void test4() {
+
+}
+*/
 void testAll() {
   test1();
+  //test2();
+  //test3();
+  //test4();
   cout << "Successfully completed all tests." << endl;
 }
 
