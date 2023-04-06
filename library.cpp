@@ -92,5 +92,7 @@ void Library::listAllBooks() const {
 
 // display all books in library
 ostream &operator<<(ostream &Out, const Library &Lib) {
-  return Out << Lib.listAllBooks();
+  Lib.listAllBooks();
+  return Out ;
 }
+
