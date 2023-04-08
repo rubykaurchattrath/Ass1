@@ -1,5 +1,7 @@
-// Created by Yusuf Pisan on 3/26/18.
-// Ruby Kaur, CSS 342 B Spring 2023
+// @file library.h
+// @Purpose: Header file includes contracts for all methods in library class
+// @author: Ruby Kaur
+// CSS 342 Spring 2023
 
 #ifndef ASS1_LIBRARY_H
 #define ASS1_LIBRARY_H
