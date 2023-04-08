@@ -1,10 +1,9 @@
-//
-// Created by Ruby Kaur on 03/30/2023.
-
-// Library class demonstrating partially filled arrays
+// @file library.cpp
+// @purpose: Library class demonstrating partially filled arrays
 // Can add/remove books from library
 // findbooks in library
-
+// @author: Ruby Kaur
+/// CSS 342 Spring 2023
 
 #include "library.h"
 #include <iostream>
