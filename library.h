@@ -16,7 +16,9 @@ class Library {
 
 public:
   // constructor with default name
-  explicit Library(const string &defaultName);
+  explicit Library(const string &DefaultName);
+  //no arg consructor
+  Library();
 
   // destructor
   virtual ~Library();
@@ -24,18 +26,21 @@ public:
   // add a new book
   // return true if successful, false if
   // book already in library and/or library is full
-  bool addBook(const string &bookName);
+  bool addBook(const string &BookName);
 
   // remove a book
   // return true if successfully removed
   // false if book not in library
-  bool removeBook(const string &bookName);
+  bool removeBook(const string &BookName);
 
   // list all books
   void listAllBooks() const;
 
   // true if book found in library
-  bool isInLibrary(const string &bookName) const;
+  bool isInLibrary(const string &BookName) const;
+
+  // get MAX
+  int getMax() const;
 
 private:
   static const int MAX = 100; //max number of books
@@ -44,7 +49,8 @@ private:
   string libraryName;
   
   // return the valid index if book is in library or -1 if book is not in library 
-  int findBook(const string& bookName) const; 
+  int findBook(const string& BookName) const; 
 };
 
 #endif  // ASS1_LIBRARY_H
+
