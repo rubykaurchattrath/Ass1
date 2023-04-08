@@ -34,7 +34,7 @@ Library::Library() {
 // the max NumberOfBooks that can be stored in the library.
 int Library::getMax() const {
     return MAX;
-  }
+}
 
 // destructor
 // nothing on heap
