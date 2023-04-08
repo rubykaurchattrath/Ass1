@@ -10,21 +10,30 @@
 #include <iostream>
 #include <string>
 
-// constructor with default Name
-// Class::Constructor
+// Purpose: constructor of Library class with default Name
+// Pre-conditions: DefaultName is a string.
+// Post-conditions: Library object is created with given DefaultName, 
+// and numberOfBooks is initialized to 0.
 Library::Library(const string &DefaultName) {
   libraryName = DefaultName;
   numberOfBooks = 0; 
 }
 
-// no arg constructor, if library name is blank
+// Purpose: Constructs an instance of the 
+// Library class with an empty name.
+// Pre-conditions: None.
+// Post-conditions: The Library object is created with an empty name 
+// and numberOfBooks is initialized to 0.
 Library::Library() {
   libraryName = "";
   numberOfBooks = 0;
 }
 
-// get MAX
-  int Library::getMax() const {
+// Purpose: Retrieves the max numberOfBooks that can be stored in the library.
+// Pre-conditions: None.
+// Post-conditions: Returns an integer representing 
+// the max NumberOfBooks that can be stored in the library.
+int Library::getMax() const {
     return MAX;
   }
 
@@ -34,7 +43,10 @@ Library::~Library() {
   // destructor
 }
 
-// true if book found in library, false if not
+// Purpose: Determines if a given book is in the library.
+// Pre-conditions: BookName is a string.
+// Post-conditions: Returns true if the book is in the library
+// false otherwise
 bool Library::isInLibrary(const string &BookName) const {
   if (findBook(BookName) == -1){
     return false;
@@ -43,8 +55,10 @@ bool Library::isInLibrary(const string &BookName) const {
   }
 }
 
-// return the valid index if book is in library or -1 if book is not in library
-// using numberOfBooks because array may be partially filled
+// Purpose: Finds the index of a given book in listOfBooks.
+// Pre-conditions: BookName is a string.
+// Post-conditions: Returns the index of the book in listOfBooks
+// or -1 if the book is not in the library.
 int Library::findBook(const string& BookName) const { 
   for (int i = (numberOfBooks - 1); i > -1; i--) {
     if (listOfBooks[i] == BookName) {
@@ -54,9 +68,12 @@ int Library::findBook(const string& BookName) const {
   return -1;
 }
 
-// add a new book
-// return true if successful, false if
-// book already in library and/or if library is full
+// Purpose: Adds a book to the library.
+// Pre-conditions: BookName is a string.
+// Post-conditions: If the book is not already in the library 
+// and the library is not full, 
+// the book is added to the library and true is returned. 
+// else false is returned
 bool Library::addBook(const string &BookName) {
   if ((isInLibrary(BookName) == false) && (numberOfBooks < MAX)) {
     listOfBooks[numberOfBooks] = BookName;
@@ -67,9 +84,11 @@ bool Library::addBook(const string &BookName) {
   }
 }
 
-// remove a book
-// return true if successfully removed
-// false if book not in library
+// Purpose: Removes a book from the library.
+// Pre-conditions: BookName is a string.
+// Post-conditions: If the book is in the library, 
+// it is removed and true is returned. 
+// Otherwise, false is returned.
 bool Library::removeBook(const string &BookName) {
   int locatedBook = findBook(BookName);
   if (locatedBook != -1) {
@@ -81,7 +100,9 @@ bool Library::removeBook(const string &BookName) {
   }
 }
 
-// list all books
+// Purpose: Lists all the books in the library.
+// Pre-conditions: None.
+// Post-conditions: Outputs all the books in the library.
 void Library::listAllBooks() const {
   if (numberOfBooks == 0) {
     cout << "No books in the " << libraryName << " library." << endl;
@@ -93,7 +114,12 @@ void Library::listAllBooks() const {
   }
 }
 
-// display all books in library
+// Purpose: Overloads the << operator for the Library class.
+// Pre-conditions: Out is an output stream, 
+// and Lib is a reference to a Library object.
+// Post-conditions: Outputs all the books in the library 
+// using the listAllBooks method, 
+// and returns the output stream.
 ostream &operator<<(ostream &Out, const Library &Lib) {
   Lib.listAllBooks();
   return Out;
