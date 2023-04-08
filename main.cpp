@@ -1,3 +1,9 @@
+// @file main.cpp
+// @purpose: Tests for the library class. 
+
+// @author Ruby Kaur 
+// CSS 342 Spring 2023
+
 #include "library.h"
 #include <cassert>
 #include <iostream>
